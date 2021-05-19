@@ -2,30 +2,36 @@ document.addEventListener('DOMContentLoaded', () => {
     // inspecting elements in the console
     // adding elements to our page
     const carPhoto = document.getElementById('tiny-car')
-    const startCommentUL = document.createElement('ul')             // initialise the UL creation
-    const commentText = document.getElementById('comment-text')     // text input box reference
-    const clientInfo = document.getElementById('client-feedback')   // client feedback DIV ID
-    const listElement = document.createElement('li');               // creates LI element
-    
-
-    // commentText.type = "text";
+    const startCommentUL = document.createElement('ul')             // var for the UL element creation
+    const commentText = document.getElementById('comment-text')     // var for text input box reference
+    const clientInfo = document.getElementById('client-feedback')   // var for client feedback DIV ID
+                   
+   
+    /* challenge:
+     // append UL to div (client-feedback)
+     // prevent default of submit
+     // create LI (list item) to append to UL - add in Event Listener
+     // grab the information from our input field, and we'll add the info as text for our list item 
+    */
 
     // adds the UL to DOM on 'DOMContentLoaded' event
-    startCommentUL;
-    startCommentUL.id ="comment-list";
-    clientInfo.appendChild(startCommentUL); 
-    const commentUL = document.getElementById("comment-list");
-    commentUL.style.listStyle = "none";
+    startCommentUL;                                                 // creates UL
+    startCommentUL.id ="comment-list";                              // adds ID to UL
+    clientInfo.appendChild(startCommentUL);                         // appends UL to client-feedback DIV
+    const commentUL = document.getElementById("comment-list");      // var for new UL (now it exists!)
+    commentUL.style.listStyle = "none";                             // CSS formatting to UL
         
-    // adding comment to <li> element
+    // adding comment to <LI> element and append to UL
 
     const createComments = () => {
+        const listElement = document.createElement('li');           /* var for LI element creation
+                                                                       due to scope has to be in function */  
         const commentValue = commentText.value                      // takes value of text input box
         const textVal = document.createTextNode(commentValue);      // converts text input to a text node
         listElement.appendChild(textVal);                           // adds text node to list element
         commentUL.appendChild(listElement);                         // adds list element to UL
     };
-         
+ 
     // adding events to elements
     
     // let's add a click event to the photo
@@ -47,18 +53,13 @@ document.addEventListener('DOMContentLoaded', () => {
     //adding eventListener to the submit button
 
     document.addEventListener("submit", (e) => {
-        // UL is created on DOM loaded event so is present
+        // UL is created in DOM loaded event so is present
         e.preventDefault();         //preventDefault - no refresh of page
         createComments();           // create Comments as a list and adds to UL - Currently not working.
         commentText.value = "";     // resets the text box
     });
 
-        // append UL to div (client-feedback)
-        // prevent default of submit
-        // create LI (list item) to append to UL - add in Event Listener
-        /* grab the information from our input field, and we'll add the info
-        as text for our list item */
-
+       
         
     // adding click event for like button
 
