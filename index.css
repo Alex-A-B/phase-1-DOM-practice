@@ -11,3 +11,7 @@ h1{
     color:#353F5E;
     /* text-align: center; */
 }
+
+fieldset {
+    text-align: left;
+}

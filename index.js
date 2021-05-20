@@ -1,10 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
     // inspecting elements in the console
     // adding elements to our page
-    const carPhoto = document.getElementById('tiny-car')
-    const startCommentUL = document.createElement('ul')             // var for the UL element creation
-    const commentText = document.getElementById('comment-text')     // var for text input box reference
-    const clientInfo = document.getElementById('client-feedback')   // var for client feedback DIV ID
+    const carPhoto = document.getElementById('tiny-car');
+    const imageSection = document.getElementById("our-images");
+    const startCommentUL = document.createElement('ul');         // var for the UL element creation
+    const commentText = document.getElementById('comment-text');  // var for text input box reference
+    const clientInfo = document.getElementById('commentLand');   // var for client feedback DIV ID
                    
    
     /* challenge:
@@ -41,12 +42,12 @@ document.addEventListener('DOMContentLoaded', () => {
             // alert('Image 1 Clicked');
             e.target.id = 'city-lights;'
             e.target.src = 'https://drscdn.500px.org/photo/129399379/m%3D900/v2?sig=9b31201fdd7ffa6bd02bd379795a89419706f4b5589e3a56de8ba00f16bde05a';
-            document.querySelector("body").style.backgroundColor = "#BFC7DE";
+            document.querySelector("body").style.backgroundColor = "#BFC7DE"; // changes the background color
         } else {
             // alert('Image 2 Clicked');
             e.target.id = 'tiny-car';
             e.target.src = 'https://iso.500px.com/wp-content/uploads/2015/12/kim.jpg';
-            document.querySelector("body").style.backgroundColor = "#e9c54e"; 
+            document.querySelector("body").style.backgroundColor = "#e9c54e"; // changes the background color
         }
     });
 
@@ -59,11 +60,22 @@ document.addEventListener('DOMContentLoaded', () => {
         commentText.value = "";     // resets the text box
     });
 
-       
-        
     // adding click event for like button
-
+    const loveButton = document.getElementById("love");
     
-
-
+    loveButton.addEventListener("click", (e) => {
+        if(e.target.innerText === "Love Me!"){
+            e.target.innerText = "Stop the Love!";
+            const para = document.createElement("p")
+            para.id = "loveMess"
+            const loveMessage = document.createTextNode("I love this picture!");
+            para.appendChild(loveMessage);
+            imageSection.appendChild(para);
+        } else {
+            e.target.innerText = "Love Me!"
+            const loveMess = document.getElementById("loveMess");
+            loveMess.remove();
+        }
+    })
+      
 })
